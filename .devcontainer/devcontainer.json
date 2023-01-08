@@ -1,0 +1,39 @@
+{
+  "name": "Java",
+  "image": "mcr.microsoft.com/devcontainers/java:0-17",
+
+  "features": {
+      "ghcr.io/devcontainers/features/java:1": {
+          "version": "19.0.1-open",
+          "jdkDistro": "open",
+          "installMaven": "true"
+      }
+  },
+
+  "customizations": {
+      "codespaces": {
+          "openFiles": [
+              "modules/playground/src/main/java/playground/Main.java",
+              "README.md",
+              "modules/playground/src/main/java/playground/examples/ResultHandling.java"
+          ]
+      },
+
+      "vscode": {
+          "settings": {
+            "java.import.maven.enabled": true,
+            "java.maven.downloadSources": true,
+            "java.server.launchMode": "Standard"
+          },
+          "extensions": [
+              "vscjava.vscode-java-pack",
+              "vscjava.vscode-java-debug",
+              "redhat.java"
+          ]
+      }
+  },
+
+  "onCreateCommand": "mvn clean package",
+
+  "remoteUser": "vscode"
+}

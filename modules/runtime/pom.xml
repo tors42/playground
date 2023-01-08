@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <relativePath>../..</relativePath>
+        <groupId>playground</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>runtime</artifactId>
+    <packaging>jlink</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>playground</groupId>
+            <artifactId>playground</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>
