@@ -23,9 +23,13 @@ The launcher is just a "shortcut" for running the default `main`-class of the `p
 
     ./modules/runtime/target/maven-jlink/default/bin/java --module playground
 
-To run another `main`-class, say `playground.examples.ResultHandling`, specify it via Terminal with:
+To run another `main`-class, say `playground.example.ResultHandling`, specify it via Terminal with:
 
-    ./modules/runtime/target/maven-jlink/default/bin/java --module playground/playground.examples.ResultHandling
+    ./modules/runtime/target/maven-jlink/default/bin/java --module playground/playground.example.ResultHandling
+
+And for completeness, the last `main`-class,
+
+    ./modules/runtime/target/maven-jlink/default/bin/java --module playground/playground.example.ResultHandlingDeconstruct
 
 ## Run JShell
 
