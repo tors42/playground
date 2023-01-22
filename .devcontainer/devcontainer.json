@@ -4,7 +4,7 @@
 
   "features": {
       "ghcr.io/devcontainers/features/java:1": {
-          "version": "19.0.1-open",
+          "version": "19.0.2-open",
           "jdkDistro": "open",
           "installMaven": "true"
       }
