@@ -4,6 +4,7 @@ Use GitHub Codespaces to try out the [Chariot](https://github.com/tors42/chariot
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=586354374)
 
+[Example](https://user-images.githubusercontent.com/4084220/213922943-5f6d0c22-68f6-44ad-ac5b-bbba8f8df8f3.webm)
 
 ## Build
 
