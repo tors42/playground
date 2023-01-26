@@ -51,17 +51,19 @@ public class DownloadGames {
         var until = ZonedDateTime.now().withDayOfYear(1);
         var since = until.minusYears(1);
 
-        System.out.println("Downloading games from %s to %s".formatted(DateTimeFormatter.ISO_LOCAL_DATE.format(since), DateTimeFormatter.ISO_LOCAL_DATE.format(until)));
+        //System.out.println("Downloading games from %s to %s".formatted(DateTimeFormatter.ISO_LOCAL_DATE.format(since), DateTimeFormatter.ISO_LOCAL_DATE.format(until)));
 
         System.out.println("Downloaded %d games".formatted(counter.intValue()));
         client.games().byUserId(userId, parameters -> parameters
                 .pgn()
                 .clocks()
-                .since(since)
-                .until(until)
+                //.since(since)
+                //.until(until)
                 )
             .stream()
             .peek(progress)
+            .filter(game -> List.of(game.players().white(), game.players().black()).stream()
+                    .anyMatch(p -> p instanceof User u && !u.title().isEmpty() && !userId.equals(u.id())))
             .map(game -> new PgnFile(game.pgn(), destinationFile(game, userId)))
             .forEach(pgnFile -> writeToFile(pgnFile.file(), pgnFile.pgn()));
         System.out.println("Downloaded %d games".formatted(counter.intValue()));
