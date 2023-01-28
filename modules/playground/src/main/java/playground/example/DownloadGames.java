@@ -6,7 +6,6 @@ import java.nio.file.*;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.LongAdder;
 import java.util.function.Consumer;
@@ -70,8 +69,8 @@ public class DownloadGames {
     static Path destinationFile(Pgn pgn, String myId) {
         return switch(pgn.tagMap().get("Result")) {
             case "1/2-1/2" -> draw;
-            case "0-1"     -> Objects.equals(myId, pgn.tagMap().get("White")) ? loss : win;
-            case "1-0"     -> Objects.equals(myId, pgn.tagMap().get("White")) ? win : loss;
+            case "0-1"     -> myId.equals(pgn.tagMap().get("White")) ? loss : win;
+            case "1-0"     -> myId.equals(pgn.tagMap().get("White")) ? win : loss;
             default        -> other;
         };
     }
