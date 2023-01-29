@@ -32,6 +32,3 @@ And for completeness, the last `main`-class,
 
     ./modules/runtime/target/maven-jlink/default/bin/java --module playground/playground.example.ResultHandlingDeconstruct
 
-## Run JShell
-
-    jshell --class-path ~/.m2/repository/io/github/tors42/chariot/0.0.57/chariot-0.0.57.jar
