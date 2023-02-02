@@ -28,13 +28,7 @@ public class DownloadGames {
         for (var file : List.of(win, draw, loss))
             Files.deleteIfExists(file);
 
-        String userId;
-        if (args.length == 0) {
-            System.out.print("Lichess user id: ");
-            userId = System.console().readLine();
-        } else {
-            userId = args[0];
-        }
+        String userId = args.length == 0 ? System.console().readLine("Lichess user id: ") : args[0];
 
         var client = initializeClient(); //initializeClient("API-TOKEN");
 
