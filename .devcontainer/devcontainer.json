@@ -1,10 +1,10 @@
 {
   "name": "Java",
-  "image": "mcr.microsoft.com/devcontainers/java:0-17",
+  "image": "mcr.microsoft.com/devcontainers/java:21",
 
   "features": {
       "ghcr.io/devcontainers/features/java:1": {
-          "version": "20.0.1-open",
+          "version": "21",
           "jdkDistro": "open",
           "installMaven": "true"
       }
@@ -36,7 +36,7 @@
 
   "forwardPorts": [8000],
 
-  "onCreateCommand": "mvn clean package",
+  "onCreateCommand": "mvn clean verify",
 
   "remoteUser": "vscode"
 }
