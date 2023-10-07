@@ -42,7 +42,7 @@ public class TournamentWinner {
     static void winnerOfArena2(String arenaId) {
         var client = Client.basic();
 
-        client.tournaments().resultsByArenaId(arenaId).stream()
+        client.tournaments().resultsByArenaId(arenaId, params -> params.sheet()).stream()
             .limit(3)
             .forEach(System.out::println);
 
