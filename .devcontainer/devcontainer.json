@@ -15,8 +15,7 @@
           "openFiles": [
               "modules/playground/src/main/java/playground/Main.java",
               "README.md",
-              "modules/playground/src/main/java/playground/example/ResultHandling.java",
-              "modules/playground/src/main/java/playground/example/ResultHandlingDeconstruct.java"
+              "modules/playground/src/main/java/playground/example/ResultHandling.java"
           ]
       },
 
