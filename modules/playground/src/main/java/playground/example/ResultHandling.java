@@ -33,11 +33,14 @@ public class ResultHandling {
         String oneResult4 =        instanceofType(oneTeam);
         String oneResult5 = instanceofTypeNegated(oneTeam);
         String oneResult6 =            switchType(oneTeam);
+        String oneResult7 = instanceofDeconstruct(oneTeam);
+        String oneResult8 =     switchDeconstruct(oneTeam);
+
 
         // All methods should extract the same message,
         // so only 1 distinct message should be shown by below println
         System.out.println("Result One<Team>:");
-        List.of(oneResult1, oneResult2, oneResult3, oneResult4, oneResult5, oneResult6)
+        List.of(oneResult1, oneResult2, oneResult3, oneResult4, oneResult5, oneResult6, oneResult7, oneResult8)
             .stream()
             .distinct() //removes duplicates
             .forEach(System.out::println);
@@ -103,6 +106,25 @@ public class ResultHandling {
         };
     }
 
+
+    static String instanceofDeconstruct(One<Team> result) {
+        // instanceof Record deconstruction pattern match. Allows access to the contained value immediately.
+        if (result instanceof Entry(Team team)) {
+            String message = formatOne(team);
+            return message;
+        }
+        return "No team!";
+    }
+
+    static String switchDeconstruct(One<Team> result) {
+        // switch expression Record deconstruction pattern match
+        return switch(result) {
+            case Entry(Team team)                -> formatOne(team);
+            case Fail(int statusCode, var error) -> "Code: " + statusCode + " - " + error.message();
+            case None _                          -> "No team!";
+        };
+    }
+
     static String formatOne(Team team) {
         return "Team %s has %d members!".formatted(team.name(), team.nbMembers());
     }
@@ -130,11 +152,14 @@ public class ResultHandling {
         String manyResults2 =        instanceofType( simulateFreshResult(list) );
         String manyResults3 = instanceofTypeNegated( simulateFreshResult(list) );
         String manyResults4 =            switchType( simulateFreshResult(list) );
+        String manyResults5 = instanceofDeconstruct( simulateFreshResult(list) );
+        String manyResults6 =     switchDeconstruct( simulateFreshResult(list) );
+
 
         // All methods should extract the same message,
         // so only 1 distinct message should be shown by below println
         System.out.println("Result Many<Team> (3):");
-        List.of(manyResults1, manyResults2, manyResults3, manyResults4)
+        List.of(manyResults1, manyResults2, manyResults3, manyResults4, manyResults5, manyResults6)
             .stream()
             .distinct() //removes duplicates
             .forEach(System.out::println);
@@ -177,6 +202,23 @@ public class ResultHandling {
         return switch(result) {
             case Entries<Team> many -> formatThree(many.stream());
             case Fail<Team> fail    -> fail.message();
+        };
+    }
+
+    static String instanceofDeconstruct(Many<Team> result) {
+        // instanceof Record deconstruction pattern match. Allows access to the contained stream immediately.
+        if (result instanceof Entries(Stream<Team> stream)) {
+            String message = formatThree(stream);
+            return message;
+        }
+        return "No teams!";
+    }
+
+    static String switchDeconstruct(Many<Team> result) {
+        // switch expression Record deconstruction pattern match
+        return switch(result) {
+            case Entries(Stream<Team> stream)    -> formatThree(stream);
+            case Fail(int statusCode, var error) -> "Code: " + statusCode + " - " + error.message();
         };
     }
 
