@@ -28,7 +28,3 @@ To run another `main`-class, say `playground.example.ResultHandling`, specify it
 
     ./modules/runtime/target/maven-jlink/default/bin/java --module playground/playground.example.ResultHandling
 
-And for completeness, the last `main`-class,
-
-    ./modules/runtime/target/maven-jlink/default/bin/java --module playground/playground.example.ResultHandlingDeconstruct
-
